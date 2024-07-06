@@ -1,12 +1,15 @@
 import { useState } from 'react'
 
 import './App.css'
+import Hero from './components/Hero'
+import Display from './components/Display'
 
 function App() {
 
   return (
-    <div className='container'>
-    Hello movie world
+    <div className='wrapper'>
+     <Hero/>
+     <Display/>
     </div>
   )
 }

@@ -1,0 +1,13 @@
+.wrapper{
+  background-color: rgb(83, 83, 83);
+  min-height: 200vh;
+}
+nav{
+  background-color: rgba(0, 0, 0, 0.265);
+}
+.hero{
+  height: 80vh;
+  position: relative;
+
+  
+}
