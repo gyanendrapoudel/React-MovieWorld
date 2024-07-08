@@ -1,7 +1,7 @@
 const MovieCard = ({}) => {
     const poster = 'https://www.omdbapi.com/src/poster.jpg'
   return (
-    <div className="row ">
+    <div className="row movie-card-display p-3 rounded text-dark ">
       <div className="col-md">
         <img className="rounded" src={poster} alt="" />
       </div>

@@ -29,7 +29,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="movie-card-display rounded text-dark p-3 ">
+        <div className="  ">
             <MovieCard/>
         </div>
       </div>
