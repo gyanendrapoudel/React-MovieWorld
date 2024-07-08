@@ -1,3 +1,5 @@
+import MovieCard from "./MovieCard"
+
 const Hero = () => {
     const heroStyle = {
       backgroundImage: `url("https://www.omdbapi.com/src/poster.jpg")`,
@@ -13,7 +15,7 @@ const Hero = () => {
         </div>
       </nav>
       <div
-        className="hero text-center text-light d-flex justify-content-center align-items-center"
+        className="hero text-center text-light d-flex flex-column justify-content-center align-items-center "
         style={heroStyle}
       >
         <div>
@@ -27,7 +29,11 @@ const Hero = () => {
             </button>
           </div>
         </div>
+        <div className="movie-card-display rounded text-dark p-3 ">
+            <MovieCard/>
+        </div>
       </div>
+      
     </>
   )
 }
