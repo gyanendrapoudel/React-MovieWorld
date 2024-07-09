@@ -44,7 +44,7 @@ const Hero = () => {
         className="hero text-center text-light d-flex flex-column justify-content-center align-items-center "
         style={heroStyle}
       >
-        <div>
+        <div className="search-section">
           <h4 className="fs-3">Search Millions Of Movies</h4>
           <p className="fw-bold">
             Find about the more before watching them....
@@ -62,7 +62,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="  ">
+        <div className="movie-card ">
           <MovieCard foundMovie={foundMovie} />
         </div>
       </div>
