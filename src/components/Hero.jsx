@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import MovieCard from "./MovieCard"
 import { fetchAPI } from "../utils/axios"
 import { randomChar } from "../utils/radomChar"
 
 const Hero = () => {
    const [foundMovie , setFoundMovie] = useState({})
+   const shouldFetchRef = useRef(true)
+   const searchStringRef = useRef('')
     const heroStyle = {
       backgroundImage: `url(${foundMovie.Poster})`,
        backgroundRepeat: "no-repeat",
@@ -13,15 +15,24 @@ const Hero = () => {
     }
 
     useEffect(()=>{
-     fetchMovie()
+      if(shouldFetchRef.current){
+            fetchMovie(randomChar())
+            shouldFetchRef.current=false
+      }
+     
     },[])
 
 
-    const fetchMovie =  async()=>{
-      const str = randomChar()
+    const fetchMovie =  async(str)=>{
       const movie =  await fetchAPI(str)
       setFoundMovie(movie)
     }
+    const handleClick = ()=>{
+      const str = searchStringRef.current.value
+      fetchMovie(str)
+      searchStringRef.current.value=''
+    }
+
   return (
     <>
       <nav className="fixed-top  py-3 text-danger">
@@ -35,20 +46,26 @@ const Hero = () => {
       >
         <div>
           <h4 className="fs-3">Search Millions Of Movies</h4>
-          <p className="fw-bold">Find about the more before watching them....</p>
+          <p className="fw-bold">
+            Find about the more before watching them....
+          </p>
 
-          <div className="input-group mb-3 w-75 m-auto" >
-            <input type="text" className="form-control" placeholder="Movie Name" />
-            <button className="btn btn-danger light text-light " type="button">
+          <div className="input-group mb-3 w-75 m-auto">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Movie Name"
+              ref={searchStringRef}
+            />
+            <button className="btn btn-danger light text-light " type="button" onClick={handleClick}>
               Search
             </button>
           </div>
         </div>
         <div className="  ">
-            <MovieCard foundMovie={foundMovie}/>
+          <MovieCard foundMovie={foundMovie} />
         </div>
       </div>
-      
     </>
   )
 }
