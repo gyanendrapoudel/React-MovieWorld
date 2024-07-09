@@ -25,14 +25,14 @@ nav{
   z-index: 2;
   position: absolute;
   transition: all 0.3s linear;
-  top:50%;
+  top:30%;
   left: 50%;
   transform: translate(-50%,0%);
 }
 
 .top{
   position: absolute;
-  top:20%;
+  top:10%;
   left: 50%;
   transform: translate(-50%,0%);
 }
@@ -42,31 +42,24 @@ nav{
   background: rgba(255, 255, 255, 0.508);
   backdrop-filter: blur(5px);
   width: 500px;
-  
-
+ 
 }
 .movie-card-display img{
   width: 100%;
   height: auto;
 }
 
-@media (max-width:768px) {
-    .movie-card-display {
-      width: 300px;
-    }
-  .movie-card-display img{
-    max-height: 200px;
-    
-    object-fit: cover;
-  }
-  
-}
+
 /* movie card end */
 
 /* show movie card animation */
 .show-movie{
   transform: scale(1);
   animation: zoom 0.5s;
+}
+/* display section  */
+.display{
+  
 }
 @keyframes zoom {
   0%{
@@ -82,4 +75,15 @@ nav{
   100%{
     transform: scale(1);
   }
+}
+@media (max-width:768px) {
+    .movie-card-display {
+      width: 300px;
+     
+    }
+  .movie-card-display img{
+    max-height: 150px;
+    object-fit: cover;
+  }
+  
 }

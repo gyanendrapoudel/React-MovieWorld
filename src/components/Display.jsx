@@ -2,7 +2,7 @@ import MovieCard from "./MovieCard"
 
 const Display = () => {
   return (
-    <div className="pt-5 container bg-dark ">
+    <div className="pt-5 display container bg-dark ">
       <div className="row  rounded text-light p-3">
         <div className="col">
           <div

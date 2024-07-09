@@ -35,10 +35,14 @@ const Hero = () => {
       fetchMovie(str)
       searchStringRef.current.value=''
     }
-
+    // handling Delete BTN
+    const handleDelete = ()=>{
+      setFoundMovie({})
+      setSearching(true)
+    }
   return (
     <>
-      <nav className="fixed-top  py-3 text-danger">
+      <nav className="fixed-top  py-2 text-danger">
         <div className="container">
           <h2>Movie world</h2>
         </div>
@@ -75,7 +79,7 @@ const Hero = () => {
           </div>
           {!searching && (
             <div className="movie-card show-movie ">
-              <MovieCard foundMovie={foundMovie} />
+              <MovieCard foundMovie={foundMovie} deleteMovie={handleDelete}/>
             </div>
           )}
         </div>

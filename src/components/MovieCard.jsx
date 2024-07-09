@@ -1,20 +1,22 @@
-const MovieCard = ({foundMovie}) => {
-    const {Poster,Title, imdbRataing,Plot} = foundMovie
-      return (
-    <div className="row movie-card-display p-3 rounded text-dark ">
+const MovieCard = ({ foundMovie, deleteMovie }) => {
+  const { Poster, Title, imdbRating, Plot } = foundMovie
+  return (
+    <div className="row movie-card-display p-1 rounded text-dark ">
       <div className="col-md">
         <img className="rounded" src={Poster} alt="" />
       </div>
       <div className="col-md text-start d-grid">
-        <h3>{Title}</h3>
-        <p>IMDB Rating: {imdbRataing}</p>
-        <p>{Plot?.slice(0,70)}...</p>
-        <div className="  mt-3 ">
-          <button className="btn me-5 btn-warning  ">Drama</button>
+        <div className="fw-bold fs-4">{Title}</div>
+        <div className="fw-bold fs-5">IMDB Rating: {imdbRating}</div>
+        <div>{Plot?.slice(0, 70)}...</div>
+        <div className=" mt-2 d-flex justify-content-between ">
+          <button className="btn  btn-warning  ">Drama</button>
           <button className="btn btn-info">Action</button>
         </div>
-        <div className=" pe-2  ">
-          <button className="btn btn-danger mt-2 w-100">Delete</button>
+        <div className="pb-1">
+          <button className="btn btn-danger mt-2 w-100" onClick={deleteMovie}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
