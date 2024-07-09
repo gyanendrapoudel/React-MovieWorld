@@ -21,8 +21,20 @@ nav{
   background-color: rgba(0, 0, 0, 0.457);
   z-index:0;
 }
-.search-section,.movie-card{
+.hero-content{
   z-index: 2;
+  position: absolute;
+  transition: all 0.3s linear;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,0%);
+}
+
+.top{
+  position: absolute;
+  top:20%;
+  left: 50%;
+  transform: translate(-50%,0%);
 }
 
 /* movie card start */

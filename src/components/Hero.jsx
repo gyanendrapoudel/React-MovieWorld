@@ -47,31 +47,38 @@ const Hero = () => {
         className="hero text-center text-light d-flex flex-column justify-content-center align-items-center "
         style={heroStyle}
       >
-        
-        <div className="search-section">
-          {searching && <h4 className="fs-3">Search Millions Of Movies</h4>}
-          {searching && <p className="fw-bold">
-            Find about the more before watching them....
-          </p>}
+        <div className={searching?"hero-content":"hero-content top"}>
+          <div className="search-section">
+            {searching && <h4 className="fs-3">Search Millions Of Movies</h4>}
+            {searching && (
+              <p className="fw-bold">
+                Find about the more before watching them....
+              </p>
+            )}
 
-          <div className="input-group mb-3 w-75 m-auto">
-            <input
-             onFocus={()=>setSearching(true)}
-              type="text"
-              className="form-control"
-              placeholder="Movie Name"
-              ref={searchStringRef}
-            />
-            <button className="btn btn-danger light text-light " type="button" onClick={handleClick}>
-              Search
-            </button>
+            <div className="input-group mb-3 w-100 m-auto">
+              <input
+                onFocus={() => setSearching(true)}
+                type="text"
+                className="form-control"
+                placeholder="Movie Name"
+                ref={searchStringRef}
+              />
+              <button
+                className="btn btn-danger light text-light "
+                type="button"
+                onClick={handleClick}
+              >
+                Search
+              </button>
+            </div>
           </div>
+          {!searching && (
+            <div className="movie-card show-movie ">
+              <MovieCard foundMovie={foundMovie} />
+            </div>
+          )}
         </div>
-        {!searching&&
-        <div className="movie-card show-movie ">
-          <MovieCard foundMovie={foundMovie} />
-        </div>
-        }
       </div>
     </>
   )
