@@ -1,4 +1,7 @@
+import { useEffect } from "react"
 import MovieCard from "./MovieCard"
+import { fetchAPI } from "../utils/axios"
+import { randomChar } from "../utils/radomChar"
 
 const Hero = () => {
     const heroStyle = {
@@ -6,6 +9,18 @@ const Hero = () => {
        backgroundRepeat: "no-repeat",
        backgroundPosition: "center",
         backgroundSize: "cover",
+    }
+
+    useEffect(()=>{
+     fetchMovie()
+    },[])
+
+    
+    const fetchMovie =  async()=>{
+      const str = randomChar()
+      console.log(str)
+      const movie =  await fetchAPI(str)
+      console.log(movie)
     }
   return (
     <>
@@ -22,9 +37,9 @@ const Hero = () => {
           <h4 className="fs-3">Search Millions Of Movies</h4>
           <p className="fw-bold">Find about the more before watching them....</p>
 
-          <div class="input-group mb-3 w-75 m-auto" >
-            <input type="text" class="form-control" placeholder="Movie Name" />
-            <button class="btn btn-danger light text-light " type="button">
+          <div className="input-group mb-3 w-75 m-auto" >
+            <input type="text" className="form-control" placeholder="Movie Name" />
+            <button className="btn btn-danger light text-light " type="button">
               Search
             </button>
           </div>
