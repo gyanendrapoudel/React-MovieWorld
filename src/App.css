@@ -50,3 +50,24 @@ nav{
   
 }
 /* movie card end */
+
+/* show movie card animation */
+.show-movie{
+  transform: scale(1);
+  animation: zoom 0.5s;
+}
+@keyframes zoom {
+  0%{
+    transform: scale(0);
+  }
+  25%{
+    transform: scale(0.25);
+
+  }
+  50%{
+    transform: scale(0.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+}

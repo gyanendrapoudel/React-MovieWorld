@@ -7,6 +7,8 @@ const Hero = () => {
    const [foundMovie , setFoundMovie] = useState({})
    const shouldFetchRef = useRef(true)
    const searchStringRef = useRef('')
+   const [searching, setSearching ] = useState(false)
+
     const heroStyle = {
       backgroundImage: `url(${foundMovie.Poster})`,
        backgroundRepeat: "no-repeat",
@@ -26,6 +28,7 @@ const Hero = () => {
     const fetchMovie =  async(str)=>{
       const movie =  await fetchAPI(str)
       setFoundMovie(movie)
+      setSearching(false)
     }
     const handleClick = ()=>{
       const str = searchStringRef.current.value
@@ -44,14 +47,16 @@ const Hero = () => {
         className="hero text-center text-light d-flex flex-column justify-content-center align-items-center "
         style={heroStyle}
       >
+        
         <div className="search-section">
-          <h4 className="fs-3">Search Millions Of Movies</h4>
-          <p className="fw-bold">
+          {searching && <h4 className="fs-3">Search Millions Of Movies</h4>}
+          {searching && <p className="fw-bold">
             Find about the more before watching them....
-          </p>
+          </p>}
 
           <div className="input-group mb-3 w-75 m-auto">
             <input
+             onFocus={()=>setSearching(true)}
               type="text"
               className="form-control"
               placeholder="Movie Name"
@@ -62,9 +67,11 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="movie-card ">
+        {!searching&&
+        <div className="movie-card show-movie ">
           <MovieCard foundMovie={foundMovie} />
         </div>
+        }
       </div>
     </>
   )
