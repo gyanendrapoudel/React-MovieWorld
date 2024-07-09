@@ -1,13 +1,14 @@
-const MovieCard = ({}) => {
-    const poster = 'https://www.omdbapi.com/src/poster.jpg'
-  return (
+const MovieCard = ({foundMovie}) => {
+    const {Poster,Title, imdbRataing,Plot} = foundMovie
+      return (
     <div className="row movie-card-display p-3 rounded text-dark ">
       <div className="col-md">
-        <img className="rounded" src={poster} alt="" />
+        <img className="rounded" src={Poster} alt="" />
       </div>
       <div className="col-md text-start d-grid">
-        <p>Movie name</p>
-        <>description</>
+        <h3>{Title}</h3>
+        <p>IMDB Rating: {imdbRataing}</p>
+        <p>{Plot?.slice(0,70)}...</p>
         <div className="  mt-3 ">
           <button className="btn me-5 btn-warning  ">Drama</button>
           <button className="btn btn-info">Action</button>

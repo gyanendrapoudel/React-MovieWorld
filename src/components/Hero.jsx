@@ -1,11 +1,12 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 import { fetchAPI } from "../utils/axios"
 import { randomChar } from "../utils/radomChar"
 
 const Hero = () => {
+   const [foundMovie , setFoundMovie] = useState({})
     const heroStyle = {
-      backgroundImage: `url("https://www.omdbapi.com/src/poster.jpg")`,
+      backgroundImage: `url(${foundMovie.Poster})`,
        backgroundRepeat: "no-repeat",
        backgroundPosition: "center",
         backgroundSize: "cover",
@@ -15,12 +16,11 @@ const Hero = () => {
      fetchMovie()
     },[])
 
-    
+
     const fetchMovie =  async()=>{
       const str = randomChar()
-      console.log(str)
       const movie =  await fetchAPI(str)
-      console.log(movie)
+      setFoundMovie(movie)
     }
   return (
     <>
@@ -45,7 +45,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="  ">
-            <MovieCard/>
+            <MovieCard foundMovie={foundMovie}/>
         </div>
       </div>
       

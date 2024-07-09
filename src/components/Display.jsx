@@ -23,10 +23,10 @@ const Display = () => {
         </div>
       </div>
       <div className="d-flex justify-content-around flex-wrap row-gap-5 mt-5 pb-5">
+        {/* <MovieCard />
         <MovieCard />
         <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        <MovieCard /> */}
       </div>
     </div>
   ) 
