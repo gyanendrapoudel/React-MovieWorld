@@ -1,6 +1,7 @@
 import MovieCard from "./MovieCard"
 
-const Display = () => {
+const Display = ({ genres }) => {
+  console.log(genres)
   return (
     <div className="pt-5 display container bg-dark ">
       <div className="row  rounded text-light p-3">
@@ -29,6 +30,6 @@ const Display = () => {
         <MovieCard /> */}
       </div>
     </div>
-  ) 
+  )
 }
 export default Display

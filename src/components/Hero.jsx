@@ -3,11 +3,13 @@ import MovieCard from "./MovieCard"
 import { fetchAPI } from "../utils/axios"
 import { randomChar } from "../utils/radomChar"
 
-const Hero = () => {
+const Hero = ({handleGenres}) => {
    const [foundMovie , setFoundMovie] = useState({})
    const shouldFetchRef = useRef(true)
    const searchStringRef = useRef('')
    const [searching, setSearching ] = useState(false)
+  
+   
 
     const heroStyle = {
       backgroundImage: `url(${foundMovie.Poster})`,
@@ -40,6 +42,12 @@ const Hero = () => {
       setFoundMovie({})
       setSearching(true)
     }
+     const handleBtn = (category) => {
+      
+       handleGenres({ ...foundMovie, category })
+       setFoundMovie({})
+       setSearching(true)
+     }
   return (
     <>
       <nav className="fixed-top  py-2 text-danger">
@@ -51,7 +59,7 @@ const Hero = () => {
         className="hero text-center text-light d-flex flex-column justify-content-center align-items-center "
         style={heroStyle}
       >
-        <div className={searching?"hero-content":"hero-content top"}>
+        <div className={searching ? 'hero-content' : 'hero-content top'}>
           <div className="search-section">
             {searching && <h4 className="fs-3">Search Millions Of Movies</h4>}
             {searching && (
@@ -79,7 +87,11 @@ const Hero = () => {
           </div>
           {!searching && (
             <div className="movie-card show-movie ">
-              <MovieCard foundMovie={foundMovie} deleteMovie={handleDelete}/>
+              <MovieCard
+                foundMovie={foundMovie}
+                deleteMovie={handleDelete}
+                handleBtn={handleBtn}
+              />
             </div>
           )}
         </div>

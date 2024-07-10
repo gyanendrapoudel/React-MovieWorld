@@ -5,11 +5,16 @@ import Hero from './components/Hero'
 import Display from './components/Display'
 
 function App() {
-
+  const [genres, setGenres] = useState([])
+  const handleGenres=(movie)=>{
+   
+      setGenres([...genres,movie])
+  }
+  console.log(genres)
   return (
     <div className='wrapper'>
-     <Hero/>
-     <Display/>
+     <Hero handleGenres={handleGenres}/>
+     <Display genres={genres}/>
     </div>
   )
 }
