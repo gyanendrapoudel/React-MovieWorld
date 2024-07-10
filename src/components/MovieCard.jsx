@@ -13,6 +13,7 @@ const MovieCard = ({ foundMovie, deleteMovie, handleBtn }) => {
         <div className="fw-bold fs-4">{Title}</div>
         <div className="fw-bold fs-5">IMDB Rating: {imdbRating}</div>
         <div>{Plot?.slice(0, 70)}...</div>
+        {!foundMovie.category&&
         <div className=" mt-2 d-flex justify-content-between ">
           <button
             className="btn  btn-warning "
@@ -27,6 +28,7 @@ const MovieCard = ({ foundMovie, deleteMovie, handleBtn }) => {
             Action
           </button>
         </div>
+        }
         <div className="pb-1">
           <button className="btn btn-danger mt-2 w-100" onClick={deleteMovie}>
             Delete

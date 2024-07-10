@@ -1,7 +1,7 @@
 import MovieCard from "./MovieCard"
 
 const Display = ({ genres }) => {
-  console.log(genres)
+  
   return (
     <div className="pt-5 display container bg-dark ">
       <div className="row  rounded text-light p-3">
@@ -23,11 +23,10 @@ const Display = ({ genres }) => {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-around flex-wrap row-gap-5 mt-5 pb-5">
-        {/* <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard /> */}
+      <div className="d-flex justify-content-around flex-wrap row-gap-2 mt-5 pb-5">
+        {genres.map((genre,i)=>{
+          return <MovieCard foundMovie={genre} key={i} />
+        })}
       </div>
     </div>
   )

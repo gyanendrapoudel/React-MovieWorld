@@ -7,8 +7,9 @@ import Display from './components/Display'
 function App() {
   const [genres, setGenres] = useState([])
   const handleGenres=(movie)=>{
-   
-      setGenres([...genres,movie])
+      // avoiding duplicatio
+      const tempMovie = genres.filter((item)=>item.imdbID!==movie.imdbID)
+      setGenres([...tempMovie,movie])
   }
   console.log(genres)
   return (
