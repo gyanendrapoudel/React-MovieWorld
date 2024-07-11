@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 
-const Display = ({ genres }) => {
+const Display = ({ genres, handleDeleteDisplay }) => {
   const [filterMovies, setFilterMovies] = useState([])
- const handleFilterBtns = (str)=>{
-    if(str==='all'){
+  const handleFilterBtns = (str) => {
+    if (str === 'all') {
       setFilterMovies([...genres])
       return
     }
-      const items = genres.filter((item)=>item.category===str)
-      setFilterMovies(items)
+    const items = genres.filter((item) => item.category === str)
+    setFilterMovies(items)
   }
-  useEffect(()=>{
+  useEffect(() => {
     setFilterMovies(genres)
-  },[genres])
-  console.log(filterMovies)
+  }, [genres])
+
   return (
     <div className="pt-5 display container bg-dark ">
       <div className="row  rounded text-light p-3">
@@ -52,7 +52,13 @@ const Display = ({ genres }) => {
 
       <div className="d-flex justify-content-around flex-wrap row-gap-2 mt-5 pb-5">
         {filterMovies.map((genre, i) => {
-          return <MovieCard foundMovie={genre} key={i} />
+          return (
+            <MovieCard
+              foundMovie={genre}
+              key={i}
+              deleteMovie={handleDeleteDisplay}
+            />
+          )
         })}
       </div>
     </div>

@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard"
 import { fetchAPI } from "../utils/axios"
 import { randomChar } from "../utils/radomChar"
 
-const Hero = ({handleGenres}) => {
+const Hero = ({handleGenres,}) => {
    const [foundMovie , setFoundMovie] = useState({})
    const shouldFetchRef = useRef(true)
    const searchStringRef = useRef('')
@@ -38,10 +38,7 @@ const Hero = ({handleGenres}) => {
       searchStringRef.current.value=''
     }
     // handling Delete BTN
-    const handleDelete = ()=>{
-      setFoundMovie({})
-      setSearching(true)
-    }
+    
      const handleBtn = (category) => {
       
        handleGenres({ ...foundMovie, category })

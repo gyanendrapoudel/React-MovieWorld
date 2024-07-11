@@ -3,7 +3,7 @@ import { useState } from "react"
 const MovieCard = ({ foundMovie, deleteMovie, handleBtn }) => {
  
  
-  const { Poster, Title, imdbRating, Plot } = foundMovie
+  const { Poster, Title, imdbRating, Plot, imdbID } = foundMovie
   return (
     <div className="row movie-card-display p-1 rounded text-dark ">
       <div className="col-md">
@@ -30,7 +30,7 @@ const MovieCard = ({ foundMovie, deleteMovie, handleBtn }) => {
         </div>
         }
         <div className="pb-1">
-          <button className="btn btn-danger mt-2 w-100" onClick={deleteMovie}>
+          <button className="btn btn-danger mt-2 w-100" onClick={()=>deleteMovie(imdbID)}>
             Delete
           </button>
         </div>

@@ -7,15 +7,18 @@ import Display from './components/Display'
 function App() {
   const [genres, setGenres] = useState([])
   const handleGenres=(movie)=>{
-      // avoiding duplicatio
+      // avoiding duplication
       const tempMovie = genres.filter((item)=>item.imdbID!==movie.imdbID)
       setGenres([...tempMovie,movie])
   }
-  console.log(genres)
+ const handleDeleteDisplay = (imdbID) => {
+  confirm("Are you sure, you want to delete") &&
+   setGenres(genres.filter((gen)=>gen.imdbID!==imdbID))
+ }
   return (
     <div className='wrapper'>
-     <Hero handleGenres={handleGenres}/>
-     <Display genres={genres}/>
+     <Hero handleGenres={handleGenres} />
+     <Display genres={genres} handleDeleteDisplay={handleDeleteDisplay}/>
     </div>
   )
 }
