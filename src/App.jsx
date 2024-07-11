@@ -14,8 +14,12 @@ function App() {
       storeItemToLocalStorage([...tempMovie, movie])
   }
  const handleDeleteDisplay = (imdbID) => {
-  confirm("Are you sure, you want to delete") &&
+ if( confirm("Are you sure, you want to delete")){
    setGenres(genres.filter((gen)=>gen.imdbID!==imdbID))
+      storeItemToLocalStorage(genres.filter((gen) => gen.imdbID !== imdbID))
+
+  }
+
 
  }
  useEffect(()=>{
