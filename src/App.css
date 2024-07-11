@@ -1,3 +1,6 @@
+:root{
+  --shadow:0 0 10px 4px white
+}
 .wrapper{
   background-color: rgb(83, 83, 83);
   min-height: 200vh;
@@ -32,16 +35,22 @@ nav{
 
 .top{
   position: absolute;
-  top:10%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%,0%);
 }
+/* display */
 
+/* filterBtns */
+.box-shadow{
+  box-shadow: var(--shadow);
+}
 /* movie card start */
 .movie-card-display{
   background: rgba(255, 255, 255, 0.508);
   backdrop-filter: blur(5px);
   width: 500px;
+  box-shadow:var(--shadow) ;
  
 }
 .movie-card-display img{
@@ -57,10 +66,7 @@ nav{
   transform: scale(1);
   animation: zoom 0.5s;
 }
-/* display section  */
-.display{
-  
-}
+
 @keyframes zoom {
   0%{
     transform: scale(0);
