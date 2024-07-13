@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 
+
+
 const Display = ({ genres, handleDeleteDisplay }) => {
   const [filterMovies, setFilterMovies] = useState([])
   const handleFilterBtns = (str) => {

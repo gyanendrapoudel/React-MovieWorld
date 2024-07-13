@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import { ToastContainer, toast } from 'react-toastify'
 import './App.css'
 import Hero from './components/Hero'
 import Display from './components/Display'
@@ -28,6 +28,7 @@ function App() {
  },[])
   return (
     <div className='wrapper'>
+    <ToastContainer position='top-center'/>
      <Hero handleGenres={handleGenres} />
      <Display genres={genres} handleDeleteDisplay={handleDeleteDisplay}/>
     </div>

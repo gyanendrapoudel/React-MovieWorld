@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import MovieCard from "./MovieCard"
 import { fetchAPI } from "../utils/axios"
 import { randomChar } from "../utils/radomChar"
-
+import { toast } from "react-toastify"
 const Hero = ({handleGenres,}) => {
   const [foundMovie, setFoundMovie] = useState({})
   const shouldFetchRef = useRef(true)
@@ -27,9 +27,15 @@ const Hero = ({handleGenres,}) => {
     const movie = await fetchAPI(str)
     setFoundMovie(movie)
     setSearching(false)
+   
   }
   const handleClick = () => {
     const str = searchStringRef.current.value
+    if(!str){
+      toast.error("Please enter any character!")
+      return
+
+    }
     fetchMovie(str)
     searchStringRef.current.value = ''
   }
@@ -41,6 +47,8 @@ const Hero = ({handleGenres,}) => {
   }
   const handleBtn = (category) => {
     handleGenres({ ...foundMovie, category })
+    let capitalizedCategory = category[0].toUpperCase()+category.slice(1)
+    toast.success(`Movie added to ${capitalizedCategory} Category`)
     setFoundMovie({})
     setSearching(true)
   }
