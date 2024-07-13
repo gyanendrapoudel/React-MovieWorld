@@ -8,9 +8,10 @@ const Hero = ({handleGenres,}) => {
   const shouldFetchRef = useRef(true)
   const searchStringRef = useRef('')
   const [searching, setSearching] = useState(false)
+  const [normalBgImage, setNormalBgImage] = useState('')
 
   const heroStyle = {
-    backgroundImage: `url(${foundMovie.Poster})`,
+    backgroundImage: `url(${foundMovie.Poster?foundMovie.Poster: normalBgImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -26,6 +27,7 @@ const Hero = ({handleGenres,}) => {
   const fetchMovie = async (str) => {
     const movie = await fetchAPI(str)
     setFoundMovie(movie)
+    
     setSearching(false)
    
   }
@@ -42,6 +44,7 @@ const Hero = ({handleGenres,}) => {
  
   // handling Delete BTN
   const handleDelete = () => {
+    setNormalBgImage(foundMovie.Poster)
     setFoundMovie({})
     setSearching(true)
   }
